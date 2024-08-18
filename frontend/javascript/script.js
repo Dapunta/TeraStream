@@ -1,5 +1,11 @@
 const api = 'https://api.dapuntaratya.com/terabox-api/fetch?url=';
 
+document.getElementById('input-url').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        fetchURL();
+    }
+});
+
 async function fetchURL() {
 
     const url_element = document.getElementById('input-url');
@@ -96,3 +102,29 @@ function overlay(status, url) {
         overlay.classList.add('overlay-section', 'inactive');
     }
 }
+
+// Viewport
+
+window.visualViewport.addEventListener('resize', function() {
+    // Cek jika viewport height berubah karena munculnya keyboard
+    if (window.innerHeight < window.visualViewport.height) {
+        document.body.style.height = `${window.visualViewport.height}px`;
+    } else {
+        document.body.style.height = '100vh';
+    }
+});
+
+// Disable All Action
+
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elements = document.querySelectorAll('*');
+    elements.forEach(function(element) {
+        element.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        });
+    });
+});
