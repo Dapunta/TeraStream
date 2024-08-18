@@ -1,5 +1,5 @@
 const author = 'DyrtEastStar';
-const version = '1.0.05';
+const version = '1.0.06';
 const api = 'https://api.dapuntaratya.com/terabox-api/fetch?url=';
 
 document.getElementById('version').innerHTML = `v${version} @ ${author}`;
@@ -22,7 +22,6 @@ async function fetchURL() {
             const response = await fetch(api_url, {
                 method: 'GET',
                 mode: 'cors',
-                credentials: 'include',
                 headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'}
             });
             const result = await response.json();
