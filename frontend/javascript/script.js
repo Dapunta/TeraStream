@@ -32,7 +32,10 @@ function showResult(result) {
         child_file.innerHTML = `
             <div class="inner-file-container">
                 <div class="thumbnail-container">
-                    <img src="${item.thumbnail}"></img>
+                    <img src="${item.thumbnail}" onclick="overlay(1,'${item.thumbnail}')"></img>
+                    <div class="thumbnail-overlay-section">
+                        <a><i class="fa-solid fa-eye"></i> Preview</a>
+                    </div>
                 </div>
                 <div class="file-info-container">
                     <h3>${item.name}</h3>
@@ -77,4 +80,19 @@ function errorNotif(error) {
         <div class="error-container">
             <a><i class="fa-solid fa-triangle-exclamation"></i> Terjadi Kesalahan</a>
         </div>`
+}
+
+function overlay(status, url) {
+    const overlay = document.getElementById('overlay');
+    if (status) {
+        overlay.className = '';
+        overlay.innerHTML = `
+            <img class="image-overlay pop-up" src="${url}"></img>
+            <button type="button" class="close-overlay-button pop-up" onclick="overlay(0,0)"><i class="fa-regular fa-circle-xmark"></i></button>`
+        overlay.classList.add('overlay-section', 'active');
+        }
+    else {
+        overlay.className = '';
+        overlay.classList.add('overlay-section', 'inactive');
+    }
 }
