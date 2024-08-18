@@ -229,7 +229,7 @@ body {
 
 .scroller-result {
     width: 100%;
-    height: 86%;
+    height: 49dvh;
     border: none;
     border-radius: 12px;
     display: flexbox;
