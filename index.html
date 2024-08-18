@@ -28,16 +28,19 @@
                             <input id="input-url" type="text" placeholder="Masukkan URL Terabox" autocomplete="off" autocorrect="off" spellcheck="false"></input>
                         </div>
                         <div class="submit-box">
-                            <i class="fa-solid fa-magnifying-glass" onclick="fetchURL()"></i>
+                            <i class="fa-solid fa-magnifying-glass" onclick="nextSubmit();"></i>
                         </div>
                     </div>
                 </div>
+                <div id="loading-spinner" class="spinner-container inactive">
+                    <div class="spinner"></div>
+                </div>    
             </div>
             <div class="form-section">
                 <div class="background-slide-up slide-up"></div>
                 <div class="result-section pop-up">
                     <div id="result-container" class="scroller-result">
-                    </div>
+                    </div>                    
                 </div>
             </div>
 

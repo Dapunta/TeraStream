@@ -1,23 +1,28 @@
 const author = 'DyrtEastStar';
-const version = '1.0.06';
+const version = '1.0.07';
 const api = 'https://api.dapuntaratya.com/terabox-api/fetch?url=';
 
 document.getElementById('version').innerHTML = `v${version} @ ${author}`;
 
 document.getElementById('input-url').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        fetchURL();
+        nextSubmit();
     }
 });
 
-async function fetchURL() {
-
+function nextSubmit() {
+    loadingSpinner(true);
     const url_element = document.getElementById('input-url');
     const url = url_element.value.replace(/\s/g, '') === "" ? null : url_element.value;
+    fetchURL(url);
+    url_element.value = "";
+}
+
+async function fetchURL(url) {
 
     if (url) {
+        resetter();
         try {
-            resetter();
             const api_url = api + encodeURIComponent(url);
             const response = await fetch(api_url, {
                 method: 'GET',
@@ -28,10 +33,26 @@ async function fetchURL() {
             if (result.status === 'success') showResult(result.file);
             else notFound();
         }
-        catch (error) {errorNotif(error)};
+        catch (error) {errorNotif(error);}
+        finally {
+            loadingSpinner(false);
+        }
     }
+    else {
+        loadingSpinner(false);
+    }
+}
 
-    url_element.value = "";
+function loadingSpinner(active) {
+    const spinner = document.getElementById('loading-spinner');
+    if (active) {
+        spinner.className = '';
+        spinner.classList.add('spinner-container', 'active');
+    }
+    else {
+        spinner.className = '';
+        spinner.classList.add('spinner-container', 'inactive');
+    }
 }
 
 function showResult(result) {
@@ -51,8 +72,8 @@ function showResult(result) {
                     <h3>${item.name}</h3>
                     <p>${item.size} MB</p>
                     <div class="file-button-container">
-                        <button class="download-button" type="button" onclick="download('${item.url.replace('d.terabox.com', 'd.terabox.app')}')">Server 1</button>
-                        <button class="download-button" type="button" onclick="warning('Server 2 belum tersedia')">Server 2</button>
+                    <button class="download-button" type="button" onclick="download('${item.url2.replace('d.terabox.com', 'd3.terabox.app')}')">Server 1</button>
+                        <button class="download-button" type="button" onclick="download('${item.url.replace('d.terabox.com', 'd.terabox.app')}')">Server 2</button>
                         <button class="download-button" type="button" onclick="warning('Fitur stream belum tersedia')">Stream</button>
                     </div>
                 </div>
