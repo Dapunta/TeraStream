@@ -1,4 +1,8 @@
+const author = 'DyrtEastStar';
+const version = '1.0.05';
 const api = 'https://api.dapuntaratya.com/terabox-api/fetch?url=';
+
+document.getElementById('version').innerHTML = `v${version} @ ${author}`;
 
 document.getElementById('input-url').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -117,15 +121,15 @@ window.visualViewport.addEventListener('resize', function() {
 
 // Disable All Action
 
-// document.addEventListener('contextmenu', function(event) {
-//     event.preventDefault();
-// });
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elements = document.querySelectorAll('*');
-//     elements.forEach(function(element) {
-//         element.addEventListener('selectstart', function(event) {
-//             event.preventDefault();
-//         });
-//     });
-// });
+document.addEventListener('DOMContentLoaded', function() {
+    var elements = document.querySelectorAll('*');
+    elements.forEach(function(element) {
+        element.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        });
+    });
+});
