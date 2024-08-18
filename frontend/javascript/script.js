@@ -18,6 +18,7 @@ async function fetchURL() {
             const response = await fetch(api_url, {
                 method: 'GET',
                 mode: 'cors',
+                credentials: 'include',
                 headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'}
             });
             const result = await response.json();
@@ -47,7 +48,7 @@ function showResult(result) {
                     <h3>${item.name}</h3>
                     <p>${item.size} MB</p>
                     <div class="file-button-container">
-                        <button class="download-button" type="button" onclick="download('${item.url}')">Server 1</button>
+                        <button class="download-button" type="button" onclick="download('${item.url.replace('d.terabox.com', 'd.terabox.app')}')">Server 1</button>
                         <button class="download-button" type="button" onclick="warning('Server 2 belum tersedia')">Server 2</button>
                         <button class="download-button" type="button" onclick="warning('Fitur stream belum tersedia')">Stream</button>
                     </div>
@@ -58,7 +59,7 @@ function showResult(result) {
 }
 
 function download(url) {
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function warning(text) {
@@ -116,15 +117,15 @@ window.visualViewport.addEventListener('resize', function() {
 
 // Disable All Action
 
-document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-});
+// document.addEventListener('contextmenu', function(event) {
+//     event.preventDefault();
+// });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elements = document.querySelectorAll('*');
-    elements.forEach(function(element) {
-        element.addEventListener('selectstart', function(event) {
-            event.preventDefault();
-        });
-    });
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     var elements = document.querySelectorAll('*');
+//     elements.forEach(function(element) {
+//         element.addEventListener('selectstart', function(event) {
+//             event.preventDefault();
+//         });
+//     });
+// });
