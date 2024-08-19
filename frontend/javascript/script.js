@@ -1,6 +1,13 @@
-const author = 'DyrtEastStar';
-const version = '1.0.07';
-const api = 'https://api.dapuntaratya.com/terabox-api/fetch?url=';
+const author  = 'DyrtEastStar';
+const version = '1.0.08';
+
+const api    = 'https://api.dapuntaratya.com/terabox-api/fetch?url=';
+const domain = {
+    slow   : 'd.terabox.app',
+    // medium : 'd-jp02-zen.terabox.com',
+    medium : 'ymg-api.terabox.app',
+    fast   : 'd3.terabox.app'
+};
 
 document.getElementById('version').innerHTML = `v${version} @ ${author}`;
 
@@ -72,10 +79,11 @@ function showResult(result) {
                     <h3>${item.name}</h3>
                     <p>${item.size} MB</p>
                     <div class="file-button-container">
-                    <button class="download-button" type="button" onclick="download('${item.url2.replace('d.terabox.com', 'd3.terabox.app')}')">Server 1</button>
-                        <button class="download-button" type="button" onclick="download('${item.url.replace('d.terabox.com', 'd.terabox.app')}')">Server 2</button>
-                        <button class="download-button" type="button" onclick="warning('Fitur stream belum tersedia')">Stream</button>
-                    </div>
+                        <button class="action-button download" type="button" onclick="download('${item.url.replace('d.terabox.com', domain.slow)}')">Slow</button>
+                        <button class="action-button download" type="button" onclick="download('${item.url.replace('d.terabox.com', domain.medium)}')">Medium</button>
+                        <button class="action-button download" type="button" onclick="download('${item.url2.replace('d.terabox.com', domain.fast)}')">Fast</button>
+                        <button class="action-button stream"   type="button" onclick="warning('Fitur Stream Belum Tersedia')">Stream</button>
+                        </div>
                 </div>
             </div>`
         plot.appendChild(child_file);

@@ -363,8 +363,7 @@ body {
     gap: 5px;
 }
 
-.download-button {
-    background-color: rgba(151, 14, 255, 0.5);
+.action-button {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     outline: none;
@@ -378,8 +377,16 @@ body {
     transition: all 0.2s ease;
 }
 
-.download-button:hover {
+.action-button:hover {
     background-color: rgba(151, 14, 255, 0.8);
+}
+
+.action-button.download {
+    background-color: rgba(151, 14, 255, 0.5);
+}
+
+.action-button.stream {
+    background-color: rgba(99, 99, 99, 0.5);
 }
 
 /* Loading Spinner */
